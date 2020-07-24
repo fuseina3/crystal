@@ -1,0 +1,154 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+nav{
+    display: flex;
+    /* give it space */
+    justify-content: space-around;
+    /* center item vertically */
+    align-items: center; 
+    min-height: 8vh;
+    background-color: #5d4954;
+    font-family: 'Poppins', sans-serif;
+}
+.logo{
+    color: rgb(226, 226, 226);
+    /* change your text to uppercase */
+    text-transform: uppercase;
+    /* spacing between the letters */
+    letter-spacing: 5px;
+    /* add font size */
+    font-size: 20px;
+}
+.nav-links{
+    /* display  nav links horrizontally */
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+/* select all nav list */
+.nav-links li{
+    list-style-type: none;
+}
+
+/* select all the <a> tags*/
+.nav-links a{
+    color: rgb(226, 226, 226);
+    /* get rid of text decoration */
+    text-decoration: none;
+    /* give space to the letters */
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-style: 14px;
+}
+
+.burger div{
+    width: 25px;
+    /* the spacing between each burger line */
+    height: 3px;
+    /* give it a background color for it to show */
+    background-color: rgb(226, 226, 226);
+    /* add a margin of 5px all around for spacing */
+    margin: 5px;
+
+    /* this is also part of the last code */
+    transition: all 0.3s ease;
+}
+
+.burger{
+    /* hide it for destop view and only show it on mobile */
+    display: none;
+    /* change the cursor */
+    cursor: pointer;
+}
+
+/* for the mobile view and responsive design */
+
+/* TABLET */
+@media screen and (max-width:768px){
+   .nav-links{
+       width: 60%;
+   }
+
+}
+
+/* MOBILE */
+@media screen and (max-width:768px){
+    /* test it with: body{
+        display:none;
+    } */
+
+    body{
+        overflow-x: hidden;
+    }
+
+    /* WHAT SHOULD HAPPEN TO THE NAV-LINKS WHEN WE GET TO MOBILE */
+    .nav-links{
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #5D4954;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        /* going to move the whole container off the screen. And we hid the transform with the body code at the top which will also make you not to be able to scroll anymore */
+        transform: translateX(100%);
+        /* give it a page transition */
+        transition: transform 0.5s ease-in;
+    }
+    /* i want the nav bar lists not to show, so that when we click on the burger icon it slowly fades in */
+    .nav-links li{
+        opacity: 0;
+    }
+
+    .burger{
+        display: block;
+    }
+}
+/* add image as logo */
+#logo-image{
+    float: left;
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.nav-active{
+    transform: translateX(0%);
+}
+
+
+/* now what we have to do is to animate the list into the humburger menu
+...so lets build an animation
+*/
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* this is the last code to add. After all is said and done */
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2{
+opacity: 0;
+}
+
+.toggle .line3{
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
